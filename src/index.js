@@ -22,17 +22,15 @@ bot.start(async (ctx) => {
   }
 })
 
-bot.hears('/one', (ctx) => ctx.reply('oneWizard'))
-
 bot.hears('Первый пункт', (ctx) => ctx.scene.enter('oneWizard'))
 bot.hears('Второй пункт', (ctx) => ctx.scene.enter('twoWizard'))
-
 bot.hears('Третий пункт', (ctx) => ctx.reply('Вы выбрали третий пункт!'))
-bot.hears('/stop', (ctx) => bot.stop('SIGINT'))
+//bot.hears('/stop', (ctx) => bot.stop('SIGINT'))
 
-bot.help((ctx) => ctx.reply(`Send me a sticker`))
+bot.help((ctx) => ctx.reply(`Пришли мне стикер`))
 bot.on(`sticker`, (ctx) => ctx.reply(`👍`))
-bot.hears(`hi`, (ctx) => ctx.reply(`Hey there`))
+bot.hears(`hi`, (ctx) => ctx.reply(`Привет ${ctx.message.first_name}!`))
+bot.hears('bye', (ctx) => ctx.reply('Bye!!!'))
 bot.command('env', (ctx) => {
   ctx.reply(`ENV is ${process.env.NODE_ENV}`)
 })
